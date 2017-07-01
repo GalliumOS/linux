@@ -1,0 +1,65 @@
+linux-4.9.35-galliumos (4.9.35-galliumos0+WIP0) xenon; urgency=medium
+
+  * Rebase on upstream 4.9.35
+  * Disable patch: add-plbossart-experimental-codecs.diff (wip)
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 01 Jul 2017 20:44:12 +0000
+
+linux-4.9.4-galliumos (4.9.4-galliumos2) xenon; urgency=medium
+
+  * add patch: mitigate-CVE-2017-6074-dccp-double-free.diff
+  * update kernel config for CONFIG_EXT4_FS_ENCRYPTION
+
+ -- reynhout <reynhout@galliumos.org>  Thu, 23 Feb 2017 01:22:58 +0000 
+
+linux-4.9.4-galliumos (4.9.4-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.9.4
+  * Drop patch: add-kbd-backlight-module.diff (not needed in 4.9)
+  * Update kernel config for current keyboard backlight code
+  * New patch: add-plbossart-experimental-codecs.diff
+    - snapshot/diff of plbossart experimental/codecs branch @ e1c14d3
+      - updates cht_bsw_rt5645 cht_bsw_max98090_ti
+      - updates skl_nau88l25_max98357a skl_nau88l25_ssm4567
+  * Update kernel config for plbossart patch
+  * Add wip kernel config for Skylake audio
+    - skl_nau88l25_max98357a (LARS, others?)
+  * Add secondary kernel config for Braswell audio
+    - cht-bsw-max98090 (CYAN)
+    - cht-bsw-rt5645 (most/all others)
+
+ -- reynhout <reynhout@galliumos.org>  Mon, 16 Jan 2017 02:54:49 +0000
+
+linux-4.9.0-galliumos (4.9.0-galliumos2) xenon; urgency=medium
+
+  * New patch: fix-synaptics-trackpad-power-state.diff
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 07 Jan 2017 21:48:11 +0000
+
+linux-4.9.0-galliumos (4.9.0-galliumos1) xenon; urgency=medium
+
+  * GalliumOS patches, ported to 4.9.0
+    - add-bfq-4.9.diff
+    - add-aufs-4.9.diff
+    - add-touchscreen-support-peppy-samus.diff
+    - add-kbd-backlight-module.diff
+    - prevent-mmcblk-rpmb-errors.diff
+    - suppress-pll-unlock-msg.diff
+    - suppress-tpm-error-msg.diff
+    - allow-gpio-lookup-fallback-by-boot-param.diff
+    - fix-celes-touchpad.diff
+  * Add new GalliumOS patches
+    - increase-cherryview-num-irqs.diff
+  * Remove GalliumOS patches
+    - increase-blkcg_max_pols.diff (equivalent patch included in bfq-4.9)
+    - add-elan-touchpad.diff (now included in mainline)
+    - add-samus-audio-support.diff (now included in mainline)
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 31 Dec 2016 01:09:32 +0000
+
+linux-4.9.0-galliumos (4.9.0-galliumos0) xenon; urgency=medium
+
+  * Linux imported from kernel.org archive
+    - https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 24 Dec 2016 19:29:30 +0000
