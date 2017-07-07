@@ -9,7 +9,7 @@ suppress-pll-unlock-msg.diff
 suppress-tpm-error-msg.diff
 fix-celes-touchpad.diff
 increase-cherryview-num-irqs.diff
-## WIP: still required for BYT audio?
-allow-gpio-lookup-fallback-by-boot-param.diff
+disable-atom-pmc-platform-clocks.diff
+rename-max98090-gpios.diff
 ## WIP: needs porting if still required for LULU
 #fix-synaptics-trackpad-power-state.diff

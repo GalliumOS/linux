@@ -1,6 +1,9 @@
-linux-4.11.8-galliumos (4.11.8-galliumos0+WIP3) xenon; urgency=medium
+linux-4.11.8-galliumos (4.11.8-galliumos1) xenon; urgency=medium
 
   * Rebase on upstream 4.11.8
+  * Add patches for 4.11:
+    - disable-atom-pmc-platform-clocks.diff (BYT audio)
+    - rename-max98090-gpios.diff (BYT audio)
   * Update patches for 4.11:
     - add-bfq-4.11.0-v8r11.diff
     - add-touchscreen-support-peppy-samus.diff
@@ -9,11 +12,10 @@ linux-4.11.8-galliumos (4.11.8-galliumos0+WIP3) xenon; urgency=medium
     - suppress-tpm-error-msg.diff
     - fix-celes-touchpad.diff
     - increase-cherryview-num-irqs.diff (still required)
-  * Tentatively keep patches:
-    - allow-gpio-lookup-fallback-by-boot-param.diff (wip: BYT audio)
   * Disable patches:
     - add-aufs-4.11.diff (not released)
-    - fix-synaptics-trackpad-power-state.diff (wip: needs porting)
+    - allow-gpio-lookup-fallback-by-boot-param.diff (BYT audio, superseded)
+    - fix-synaptics-trackpad-power-state.diff (no longer needed)
     - mitigate-CVE-2017-6074-dccp-double-free.diff (included)
     - add-plbossart-experimental-codecs.diff (cht-bsw-rt5645 bits ported)
   * Propagate kernel config changes from 4.10
