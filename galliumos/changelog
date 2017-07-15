@@ -1,3 +1,17 @@
+linux-4.12-galliumos (4.12.0-galliumos2) xenon; urgency=medium
+
+  * Add patches:
+    - check-atom-pmc-platform-clocks.diff (supersedes below)
+  * Disable patches:
+    - disable-atom-pmc-platform-clocks.diff (BYT audio)
+  * Consolidate patches:
+    - add-touchscreen-support-peppy-samus.diff
+    - fix-celes-touchpad.diff
+    - (new) add-touchpad-support-caroline.diff
+    - (into) add-touchpad-touchscreen-support.diff
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 15 Jul 2017 19:58:49 +0000
+
 linux-4.12-galliumos (4.12.0-galliumos1) xenon; urgency=medium
 
   * Rebase on upstream 4.12

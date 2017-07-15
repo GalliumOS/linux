@@ -2,12 +2,11 @@
 ## AUFS for 4.12 isn't released yet
 #add-aufs-4.12.diff
 #
-add-touchscreen-support-peppy-samus.diff
+add-touchpad-touchscreen-support.diff
 prevent-mmcblk-rpmb-errors.diff
 suppress-pll-unlock-msg.diff
 suppress-tpm-error-msg.diff
-fix-celes-touchpad.diff
-disable-atom-pmc-platform-clocks.diff
 rename-max98090-gpios.diff
+check-atom-pmc-platform-clocks.diff
 ## WIP: needs porting if still required for LULU
 #fix-synaptics-trackpad-power-state.diff
