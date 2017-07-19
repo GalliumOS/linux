@@ -1,3 +1,12 @@
+linux-4.12-galliumos (4.12.0-galliumos2+dev1) xenon; urgency=medium
+
+  * Add patches:
+    - add-gpio-acpi-mapping-table-byt-max98090.diff (supersedes below)
+  * Disable patches:
+    - rename-max98090-gpios.diff (BYT audio)
+
+ -- reynhout <reynhout@galliumos.org>  Wed, 19 Jul 2017 22:01:51 +0000
+
 linux-4.12-galliumos (4.12.0-galliumos2) xenon; urgency=medium
 
   * Add patches:

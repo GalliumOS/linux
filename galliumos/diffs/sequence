@@ -1,12 +1,14 @@
-#
+## galliumos/diffs/sequence
+
 ## AUFS for 4.12 isn't released yet
 #add-aufs-4.12.diff
-#
 add-touchpad-touchscreen-support.diff
 prevent-mmcblk-rpmb-errors.diff
 suppress-pll-unlock-msg.diff
 suppress-tpm-error-msg.diff
-rename-max98090-gpios.diff
+## superseded by next
+#rename-max98090-gpios.diff
+add-gpio-acpi-mapping-table-byt-max98090.diff
 check-atom-pmc-platform-clocks.diff
 ## WIP: needs porting if still required for LULU
 #fix-synaptics-trackpad-power-state.diff
