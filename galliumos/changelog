@@ -1,4 +1,4 @@
-linux-4.12-galliumos (4.12.0-galliumos2+dev1) xenon; urgency=medium
+linux-4.12-galliumos (4.12.0-galliumos3) xenon; urgency=medium
 
   * Add patches:
     - add-gpio-acpi-mapping-table-byt-max98090.diff (supersedes below)
