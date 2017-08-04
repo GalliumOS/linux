@@ -1,0 +1,13 @@
+#
+add-aufs-4.10.diff
+add-bfq-4.10.0-v8r8.diff
+#
+add-touchscreen-support-peppy-samus.diff
+prevent-mmcblk-rpmb-errors.diff
+suppress-pll-unlock-msg.diff
+suppress-tpm-error-msg.diff
+allow-gpio-lookup-fallback-by-boot-param.diff
+fix-celes-touchpad.diff
+increase-cherryview-num-irqs.diff
+fix-synaptics-trackpad-power-state.diff
+#add-plbossart-experimental-codecs-4.10.diff

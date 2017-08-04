@@ -1,0 +1,12 @@
+diff -ruN -x .git a/sound/soc/codecs/max98090.c b/sound/soc/codecs/max98090.c
+--- a/sound/soc/codecs/max98090.c	2016-03-16 15:43:17.000000000 +0000
++++ b/sound/soc/codecs/max98090.c	2016-07-26 18:37:55.152810748 +0000
+@@ -2115,7 +2115,7 @@
+ 	if (!snd_soc_codec_is_active(codec))
+ 		return;
+ 
+-	dev_info(codec->dev, "PLL unlocked\n");
++//	dev_info(codec->dev, "PLL unlocked\n");
+ 
+ 	/* Toggle shutdown OFF then ON */
+ 	snd_soc_update_bits(codec, M98090_REG_DEVICE_SHUTDOWN,
