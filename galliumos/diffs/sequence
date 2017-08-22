@@ -10,5 +10,6 @@ suppress-tpm-error-msg.diff
 #rename-max98090-gpios.diff
 add-gpio-acpi-mapping-table-byt-max98090.diff
 check-atom-pmc-platform-clocks.diff
+add-cyan-audio-support.diff
 ## WIP: needs porting if still required for LULU
 #fix-synaptics-trackpad-power-state.diff
