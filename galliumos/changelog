@@ -1,9 +1,9 @@
-linux-4.12-galliumos (4.12.0-galliumos3+dev2) xenon; urgency=medium
+linux-4.12-galliumos (4.12.0-galliumos4) xenon; urgency=medium
 
   * Add patches:
-    - wip-cyan-audio.diff
+    - add-cyan-audio-support.diff
 
- -- reynhout <reynhout@galliumos.org>  Tue, 22 Aug 2017 18:47:38 +0000
+ -- reynhout <reynhout@galliumos.org>  Wed, 23 Aug 2017 18:00:05 +0000
 
 linux-4.12-galliumos (4.12.0-galliumos3) xenon; urgency=medium
 
