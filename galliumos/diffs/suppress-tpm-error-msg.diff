@@ -1,0 +1,17 @@
+diff --git a/drivers/char/tpm/tpm_tis_core.c b/drivers/char/tpm/tpm_tis_core.c
+index e3bf31b..cefa712 100644
+--- a/drivers/char/tpm/tpm_tis_core.c
++++ b/drivers/char/tpm/tpm_tis_core.c
+@@ -772,9 +772,9 @@ int tpm_tis_core_init(struct device *dev, struct tpm_tis_data *priv, int irq,
+ 		if (irq) {
+ 			tpm_tis_probe_irq_single(chip, intmask, IRQF_SHARED,
+ 						 irq);
+-			if (!(chip->flags & TPM_CHIP_FLAG_IRQ))
+-				dev_err(&chip->dev, FW_BUG
+-					"TPM interrupt not working, polling instead\n");
++//			if (!(chip->flags & TPM_CHIP_FLAG_IRQ))
++//				dev_err(&chip->dev, FW_BUG
++//					"TPM interrupt not working, polling instead\n");
+ 		} else {
+ 			tpm_tis_probe_irq(chip, intmask);
+ 		}

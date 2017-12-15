@@ -1,0 +1,148 @@
+From 25e3ef894eef419ee239da42edc6c1f8a4f1cfb5 Mon Sep 17 00:00:00 2001
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Date: Tue, 23 May 2017 20:03:24 +0300
+Subject: gpio: acpi: Split out acpi_gpio_get_irq_resource() helper
+
+The helper does retrieve pointer to struct acpi_resource_gpio from
+struct acpi_resource if it represents GpioInt() resource.
+
+It will be used by PNP code later on.
+
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Mika Westerberg <mika.westerberg@linux.intel.com>
+Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+---
+ drivers/gpio/gpiolib-acpi.c | 23 ++++++++++++++++++-----
+ include/linux/acpi.h        |  7 +++++++
+ 2 files changed, 25 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/gpio/gpiolib-acpi.c b/drivers/gpio/gpiolib-acpi.c
+index e431222..6bea176 100644
+--- a/drivers/gpio/gpiolib-acpi.c
++++ b/drivers/gpio/gpiolib-acpi.c
+@@ -165,6 +165,23 @@ static void acpi_gpio_chip_dh(acpi_handle handle, void *data)
+ 	/* The address of this function is used as a key. */
+ }
+ 
++bool acpi_gpio_get_irq_resource(struct acpi_resource *ares,
++				struct acpi_resource_gpio **agpio)
++{
++	struct acpi_resource_gpio *gpio;
++
++	if (ares->type != ACPI_RESOURCE_TYPE_GPIO)
++		return false;
++
++	gpio = &ares->data.gpio;
++	if (gpio->connection_type != ACPI_RESOURCE_GPIO_TYPE_INT)
++		return false;
++
++	*agpio = gpio;
++	return true;
++}
++EXPORT_SYMBOL_GPL(acpi_gpio_get_irq_resource);
++
+ static acpi_status acpi_gpiochip_request_interrupt(struct acpi_resource *ares,
+ 						   void *context)
+ {
+@@ -178,11 +195,7 @@ static acpi_status acpi_gpiochip_request_interrupt(struct acpi_resource *ares,
+ 	unsigned long irqflags;
+ 	int ret, pin, irq;
+ 
+-	if (ares->type != ACPI_RESOURCE_TYPE_GPIO)
+-		return AE_OK;
+-
+-	agpio = &ares->data.gpio;
+-	if (agpio->connection_type != ACPI_RESOURCE_GPIO_TYPE_INT)
++	if (!acpi_gpio_get_irq_resource(ares, &agpio))
+ 		return AE_OK;
+ 
+ 	handle = ACPI_HANDLE(chip->parent);
+diff --git a/include/linux/acpi.h b/include/linux/acpi.h
+index 137e4a3..d5aa3c4 100644
+--- a/include/linux/acpi.h
++++ b/include/linux/acpi.h
+@@ -964,6 +964,8 @@ int devm_acpi_dev_add_driver_gpios(struct device *dev,
+ 				   const struct acpi_gpio_mapping *gpios);
+ void devm_acpi_dev_remove_driver_gpios(struct device *dev);
+ 
++bool acpi_gpio_get_irq_resource(struct acpi_resource *ares,
++				struct acpi_resource_gpio **agpio);
+ int acpi_dev_gpio_irq_get(struct acpi_device *adev, int index);
+ #else
+ static inline int acpi_dev_add_driver_gpios(struct acpi_device *adev,
+@@ -980,6 +982,11 @@ static inline int devm_acpi_dev_add_driver_gpios(struct device *dev,
+ }
+ static inline void devm_acpi_dev_remove_driver_gpios(struct device *dev) {}
+ 
++static inline bool acpi_gpio_get_irq_resource(struct acpi_resource *ares,
++					      struct acpi_resource_gpio **agpio)
++{
++	return false;
++}
+ static inline int acpi_dev_gpio_irq_get(struct acpi_device *adev, int index)
+ {
+ 	return -ENXIO;
+-- 
+cgit v1.1
+
+From 2a56e9195dfb59548cc8b32e8e8d0eef4b65f7eb Mon Sep 17 00:00:00 2001
+From: Jagadish Krishnamoorthy <jagadish.krishnamoorthy@intel.com>
+Date: Tue, 23 May 2017 20:03:25 +0300
+Subject: PNP / ACPI: add support for GpioInt resource type
+
+The PNP ACPI driver parses ACPI interrupt resource but not
+GpioInt resource. When the firmware passes GpioInt resource
+for IRQ the PNP ACPI driver ignores it and hence the interrupt for
+the particular driver will not work.
+One such example is 8042 keyboard which uses PNP driver for obtaining
+the interrupt resource. On Intel Braswell project GpioInt is used
+instead of interrupt resource and the keyboard driver fails to
+register interrupt.
+Fix the issue by parsing GpioInt resource type.
+
+Signed-off-by: Jagadish Krishnamoorthy <jagadish.krishnamoorthy@intel.com>
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Mika Westerberg <mika.westerberg@linux.intel.com>
+[Fixed a parenthesis coding style thing]
+Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+---
+ drivers/pnp/pnpacpi/rsparser.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/drivers/pnp/pnpacpi/rsparser.c b/drivers/pnp/pnpacpi/rsparser.c
+index 4b717c6..d0358cf 100644
+--- a/drivers/pnp/pnpacpi/rsparser.c
++++ b/drivers/pnp/pnpacpi/rsparser.c
+@@ -180,6 +180,7 @@ static acpi_status pnpacpi_allocated_resource(struct acpi_resource *res,
+ 	struct pnp_dev *dev = data;
+ 	struct acpi_resource_dma *dma;
+ 	struct acpi_resource_vendor_typed *vendor_typed;
++	struct acpi_resource_gpio *gpio;
+ 	struct resource_win win = {{0}, 0};
+ 	struct resource *r = &win.res;
+ 	int i, flags;
+@@ -210,6 +211,21 @@ static acpi_status pnpacpi_allocated_resource(struct acpi_resource *res,
+ 			}
+ 		}
+ 		return AE_OK;
++	} else if (acpi_gpio_get_irq_resource(res, &gpio)) {
++		/*
++		 * If the resource is GpioInt() type then extract the IRQ
++		 * from GPIO resource and fill it into IRQ resource type.
++		 */
++		i = acpi_dev_gpio_irq_get(dev->data, 0);
++		if (i >= 0) {
++			flags = acpi_dev_irq_flags(gpio->triggering,
++						   gpio->polarity,
++						   gpio->sharable);
++		} else {
++			flags = IORESOURCE_DISABLED;
++		}
++		pnp_add_irq_resource(dev, i, flags);
++		return AE_OK;
+ 	} else if (r->flags & IORESOURCE_DISABLED) {
+ 		pnp_add_irq_resource(dev, 0, IORESOURCE_DISABLED);
+ 		return AE_OK;
+-- 
+cgit v1.1
+
