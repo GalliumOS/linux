@@ -1,15 +1,13 @@
-linux-4.14.6-galliumos (4.14.6-galliumos0+dev5) xenon; urgency=medium
+linux-4.14.6-galliumos (4.14.6-galliumos1) xenon; urgency=medium
 
   * Rebase on upstream 4.14.6
   * Add patches:
     - mask-cherryview-irqs.diff
     - backout-drm-i915-link-rate-fallback.diff
     - avoid-drm-i915-pps-state-mismatch.diff
-  * dev1: initial testing
-  * dev2: back out bcb48cca23ec (cherryview irqs)
-  * dev3: back out 9301397a (i915 link rate fallback)
-  * dev4: resync plbossart sound tree
-  * dev5: avoid pps state mismatch
+  * Update patches:
+    - sync-plbossart-sound-v4.14-intel-audio@36c2f2e.diff
+      (renamed from sync-sound-plbossart-intel-audio-stable-v4.14.diff)
 
  -- reynhout <reynhout@galliumos.org>  Mon, 18 Dec 2017 19:10:27 +0000
 

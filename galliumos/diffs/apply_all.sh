@@ -21,7 +21,7 @@ for diff in $(cat "$seq_file" | grep -v "^#" ); do
       echo "$BASENAME: apply $diff [Ynq]: \c"
       read resp
       case "$resp" in
-        [Yy]*|'') $DOIF patch -p1 < "$seq_dir/$diff" ;;
+        [Yy]*|'') $DOIF patch -p1 < "$seq_dir/$diff"; echo ;;
         [Nn]*)    ;;
         [Qq]*)    exit 0 ;;
         *) resp="incoherent" ;;
