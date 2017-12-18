@@ -10,3 +10,4 @@ sync-plbossart-sound-v4.14-intel-audio@36c2f2e.diff
 #
 mask-and-clear-cherryview-irqs.diff
 backout-drm-i915-link-rate-fallback.diff
+avoid-drm-i915-pps-state-mismatch.diff
