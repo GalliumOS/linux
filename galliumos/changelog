@@ -1,4 +1,4 @@
-linux-4.14.6-galliumos (4.14.6-galliumos0+dev3) xenon; urgency=medium
+linux-4.14.6-galliumos (4.14.6-galliumos0+dev4) xenon; urgency=medium
 
   * Rebase on upstream 4.14.6
   * Add patches:
@@ -7,8 +7,9 @@ linux-4.14.6-galliumos (4.14.6-galliumos0+dev3) xenon; urgency=medium
   * dev1: initial testing
   * dev2: back out bcb48cca23ec (cherryview irqs)
   * dev3: back out 9301397a (i915 link rate fallback)
+  * dev4: resync plbossart sound tree
 
- -- reynhout <reynhout@galliumos.org>  Fri, 15 Dec 2017 21:10:58 +0000
+ -- reynhout <reynhout@galliumos.org>  Mon, 18 Dec 2017 19:10:27 +0000
 
 linux-4.14.2-galliumos (4.14.2-galliumos0) xenon; urgency=medium
 
