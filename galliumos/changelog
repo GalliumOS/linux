@@ -1,6 +1,8 @@
 linux-4.14.29-galliumos (4.14.29-galliumos1) xenon; urgency=medium
 
   * Rebase on upstream 4.14.29
+  * Update patches:
+    - update plbossart patch for 4.14.29
   * Update config:
     - add CONFIG_RT2800USB and friends
 
@@ -9,6 +11,10 @@ linux-4.14.29-galliumos (4.14.29-galliumos1) xenon; urgency=medium
 linux-4.14.24-galliumos (4.14.24-galliumos0+dev1) xenon; urgency=medium
 
   * Rebase on upstream 4.14.24
+  * Update patches:
+    - sync-plbossart-sound-v4.14-intel-audio@8c51a59.diff
+  * Update config:
+    - for plbossart patch
 
  -- reynhout <reynhout@galliumos.org>  Tue, 06 Mar 2018 02:27:11 +0000
 
