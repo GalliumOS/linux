@@ -1,0 +1,15 @@
+diff --git a/drivers/pinctrl/intel/pinctrl-cherryview.c b/drivers/pinctrl/intel/pinctrl-cherryview.c
+index fadbca9..11399b4 100644
+--- a/drivers/pinctrl/intel/pinctrl-cherryview.c
++++ b/drivers/pinctrl/intel/pinctrl-cherryview.c
+@@ -1620,8 +1620,8 @@ static int chv_gpio_probe(struct chv_pinctrl *pctrl, int irq)
+ 			clear_bit(i, chip->irq_valid_mask);
+ 	}
+ 
+-	/* Clear all interrupts */
+-	chv_writel(0xffff, pctrl->regs + CHV_INTSTAT);
++	/* Mask and clear all interrupts */
++	chv_writel(0, pctrl->regs + CHV_INTMASK);
+ 
+ 	if (!need_valid_mask) {
+ 		irq_base = devm_irq_alloc_descs(pctrl->dev, -1, 0,
