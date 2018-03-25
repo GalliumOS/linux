@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+
+BASENAME=$(basename $0)
+INTERACTIVE=
+SEQ_FILE="galliumos/diffs/sequence"
+SEQ_DIR=$(dirname "$SEQ_FILE")
+#DOIF=":"
+
+[ "$1" = "-i" ] && INTERACTIVE=1
+
+apply_patch() {
+  local _diff=$1
+
+  $DOIF patch -p1 < "$SEQ_DIR/$_diff"
+}
+
+if [ ! -f "$SEQ_FILE" ]; then
+  echo "$BASENAME: fatal: $SEQ_FILE not found. make sure cwd is repo root!"
+  exit 1
+fi
+
+for diff in $(cat "$SEQ_FILE" | grep -v "^#" ); do
+  if [ "$INTERACTIVE" ]; then
+    resp="incoherent"
+    while [ "$resp" = "incoherent" ]; do
+      echo "$BASENAME: apply $diff [Ynq]: \c"
+      read resp
+      case "$resp" in
+        [Yy]*|'') apply_patch "$diff"; echo ;;
+        [Nn]*)    ;;
+        [Qq]*)    exit 0 ;;
+        *) resp="incoherent" ;;
+      esac
+    done
+  else
+    echo
+    echo "$BASENAME: applying $diff"
+    apply_patch "$diff"
+  fi
+done
+

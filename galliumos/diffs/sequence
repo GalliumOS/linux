@@ -1,0 +1,16 @@
+## galliumos/diffs/sequence
+
+add-aufs-4.15.diff
+#
+add-touchpad-touchscreen-support.diff
+suppress-tpm-error-msg.diff
+check-atom-pmc-platform-clocks.diff
+sync-plbossart-sound-v4.14-intel-audio@8c51a59-for4.15-v2.diff
+#
+mask-and-clear-cherryview-irqs.diff
+#backout-drm-i915-link-rate-fallback.diff
+#avoid-drm-i915-pps-state-mismatch.diff
+
+# old
+#prevent-mmcblk-rpmb-errors.diff # fixed in mainline
+#sync-plbossart-sound-v4.14-intel-audio@8c51a59.diff # replaced
