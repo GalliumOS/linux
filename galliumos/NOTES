@@ -1,0 +1,11 @@
+## galliumos/NOTES
+
+This directory borrows some debian organizational conventions.
+
+The upstream kernel git config ignores "debian", "patches", and "series",
+so we rename them to "galliumos", "diffs", and "sequence".
+
+If we edited .gitignore instead, we'd risk incomplete commits if a new
+upstream version was untarred on top and restored the original ignore
+behaviour. So this is awkward, but safe.
+
