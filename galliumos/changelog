@@ -1,8 +1,12 @@
-linux-4.15.18-galliumos (4.15.18-galliumos0+dev1) bismuth; urgency=medium
+linux-4.15.18-galliumos (4.15.18-galliumos0+dev2) bismuth; urgency=medium
 
   * Rebase on upstream 4.15.18
   * Update patches:
     - plbossart
+  * Add config for AX25/packet radio:
+    - CONFIG_HAMRADIO=y
+    - CONFIG_AX25=m
+    - CONFIG_AX25_DAMA_SLAVE=y
 
  -- reynhout <reynhout@galliumos.org>  Tue, 22 May 2018 03:09:39 +0000
 
