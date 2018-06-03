@@ -1,0 +1,283 @@
+linux-4.16.13-galliumos (4.16.13-galliumos0+dev1) bismuth; urgency=medium
+
+  * Rebase on upstream 4.16.13
+  * Update config:
+    - for 4.16.13
+  * Update patches:
+    - aufs-4.16
+    - touchpad/touchscreen config
+    - re-enable PPS state mismatch patch
+  * Disable patches:
+    - plbossart sound tree
+
+ -- reynhout <reynhout@galliumos.org>  Sun, 03 Jun 2018 04:33:52 +0000
+
+linux-4.15.18-galliumos (4.15.18-galliumos0+dev2) bismuth; urgency=medium
+
+  * Rebase on upstream 4.15.18
+  * Update patches:
+    - plbossart
+  * Add config for AX25/packet radio:
+    - CONFIG_HAMRADIO=y
+    - CONFIG_AX25=m
+    - CONFIG_AX25_DAMA_SLAVE=y
+
+ -- reynhout <reynhout@galliumos.org>  Tue, 22 May 2018 03:09:39 +0000
+
+linux-4.15.13-galliumos (4.15.13-galliumos0+dev4) bismuth; urgency=medium
+
+  * Rebase on upstream 4.15.13
+  * Update config:
+  * Update patches:
+    - aufs
+    - plbossart
+  * Disable patches:
+    - i915 patches (testing)
+
+ -- reynhout <reynhout@galliumos.org>  Thu, 05 Apr 2018 00:47:23 +0000
+
+linux-4.14.29-galliumos (4.14.29-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.14.29
+  * Update patches:
+    - update plbossart patch for 4.14.29
+  * Update config:
+    - add CONFIG_RT2800USB and friends
+
+ -- reynhout <reynhout@galliumos.org>  Sun, 25 Mar 2018 00:56:45 +0000
+
+linux-4.14.24-galliumos (4.14.24-galliumos0+dev1) xenon; urgency=medium
+
+  * Rebase on upstream 4.14.24
+  * Update patches:
+    - sync-plbossart-sound-v4.14-intel-audio@8c51a59.diff
+  * Update config:
+    - for plbossart patch
+
+ -- reynhout <reynhout@galliumos.org>  Tue, 06 Mar 2018 02:27:11 +0000
+
+linux-4.14.14-galliumos (4.14.14-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.14.14
+  * Update config:
+    - CONFIG_RETPOLINE=y
+      requires boot opt "spectre_v2=retpoline", but PoC still succeeds
+
+ -- reynhout <reynhout@galliumos.org>  Thu, 18 Jan 2018 15:38:32 +0000
+
+linux-4.14.12-galliumos (4.14.12-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.14.12
+  * Update config:
+    - CONFIG_PAGE_TABLE_ISOLATION=y
+    - CONFIG_UNWINDER_ORC=y
+  * Update patches:
+    - sync-plbossart-sound-v4.14-intel-audio@0d59679-e275fef.diff
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 06 Jan 2018 17:34:09 +0000
+
+linux-4.14.6-galliumos (4.14.6-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.14.6
+  * Add patches:
+    - mask-cherryview-irqs.diff
+    - backout-drm-i915-link-rate-fallback.diff
+    - avoid-drm-i915-pps-state-mismatch.diff
+  * Update patches:
+    - sync-plbossart-sound-v4.14-intel-audio@36c2f2e.diff
+      (renamed from sync-sound-plbossart-intel-audio-stable-v4.14.diff)
+
+ -- reynhout <reynhout@galliumos.org>  Mon, 18 Dec 2017 19:10:27 +0000
+
+linux-4.14.2-galliumos (4.14.2-galliumos0) xenon; urgency=medium
+
+  * Rebase on upstream 4.14.2
+  * Update patches for 4.14.2:
+    - add-aufs-4.14.diff
+    - add-touchpad-touchscreen-support.diff
+    - prevent-mmcblk-rpmb-errors.diff
+    - suppress-tpm-error-msg.diff
+    - fix-synaptics-trackpad-power-state.diff
+    - check-atom-pmc-platform-clocks.diff
+    - sync-sound-plbossart-intel-audio-stable-v4.14.diff
+  * Disable patches:
+    - suppress-pll-unlock-msg.diff (now ratelimited in mainline)
+    - add-gpio-acpi-mapping-table-byt-max98090.diff (in mainline)
+    - acpi-gpioint-fix-for-bsw-kbd.diff (in mainline)
+
+ -- reynhout <reynhout@galliumos.org>  Mon, 27 Nov 2017 01:35:44 +0000
+
+linux-4.12.10-galliumos (4.12.10-galliumos0) xenon; urgency=medium
+
+  * Rebase on upstream 4.12.10
+  * Update patches for 4.12.10:
+    - add-touchpad-touchscreen-support.diff
+    - prevent-mmcblk-rpmb-errors.diff
+    - suppress-pll-unlock-msg.diff
+    - suppress-tpm-error-msg.diff
+    - fix-synaptics-trackpad-power-state.diff
+    - check-atom-pmc-platform-clocks.diff
+    - add-gpio-acpi-mapping-table-byt-max98090.diff
+    - sync-byt-bsw-max98090-audio-support.diff
+    - WIP: acpi-gpioint-fix-for-bsw-kbd.diff
+  * Disable patches:
+  * Add patches:
+
+ -- reynhout <reynhout@galliumos.org>  Wed, 06 Sep 2017 03:47:56 +0000
+
+linux-4.12-galliumos (4.12.0-galliumos6) xenon; urgency=medium
+
+  * Add patches:
+    - acpi-gpioint-fix-for-bsw-kbd.diff
+
+ -- reynhout <reynhout@galliumos.org>  Mon, 04 Sep 2017 22:39:18 +0000
+
+linux-4.12-galliumos (4.12.0-galliumos5) xenon; urgency=medium
+
+  * Add patches:
+    - sync-byt-bsw-max98090-audio-support.diff
+  * Disable patches:
+    - add-cyan-audio-support.diff (superseded)
+  * Remove disabled patches
+
+ -- reynhout <reynhout@galliumos.org>  Mon, 04 Sep 2017 05:13:54 +0000
+
+linux-4.12-galliumos (4.12.0-galliumos4) xenon; urgency=medium
+
+  * Add patches:
+    - add-cyan-audio-support.diff
+
+ -- reynhout <reynhout@galliumos.org>  Wed, 23 Aug 2017 18:00:05 +0000
+
+linux-4.12-galliumos (4.12.0-galliumos3) xenon; urgency=medium
+
+  * Add patches:
+    - add-gpio-acpi-mapping-table-byt-max98090.diff (supersedes below)
+  * Disable patches:
+    - rename-max98090-gpios.diff (BYT audio)
+
+ -- reynhout <reynhout@galliumos.org>  Wed, 19 Jul 2017 22:01:51 +0000
+
+linux-4.12-galliumos (4.12.0-galliumos2) xenon; urgency=medium
+
+  * Add patches:
+    - check-atom-pmc-platform-clocks.diff (supersedes below)
+  * Disable patches:
+    - disable-atom-pmc-platform-clocks.diff (BYT audio)
+  * Consolidate patches:
+    - add-touchscreen-support-peppy-samus.diff
+    - fix-celes-touchpad.diff
+    - (new) add-touchpad-support-caroline.diff
+    - (into) add-touchpad-touchscreen-support.diff
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 15 Jul 2017 19:58:49 +0000
+
+linux-4.12-galliumos (4.12.0-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.12
+  * Update patches for 4.12:
+    - add-touchscreen-support-peppy-samus.diff
+    - prevent-mmcblk-rpmb-errors.diff
+    - suppress-pll-unlock-msg.diff
+    - suppress-tpm-error-msg.diff
+    - fix-celes-touchpad.diff
+    - disable-atom-pmc-platform-clocks.diff (BYT audio)
+    - rename-max98090-gpios.diff (BYT audio)
+  * Disable patches:
+    - add-aufs-4.12.diff (not released)
+    - add-bfq-4.12.0-vX.diff (included)
+    - increase-cherryview-num-irqs.diff (no longer required)
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 01 Jul 2017 21:25:13 +0000
+
+linux-4.11.8-galliumos (4.11.8-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.11.8
+  * Add patches for 4.11:
+    - disable-atom-pmc-platform-clocks.diff (BYT audio)
+    - rename-max98090-gpios.diff (BYT audio)
+  * Update patches for 4.11:
+    - add-bfq-4.11.0-v8r11.diff
+    - add-touchscreen-support-peppy-samus.diff
+    - prevent-mmcblk-rpmb-errors.diff
+    - suppress-pll-unlock-msg.diff
+    - suppress-tpm-error-msg.diff
+    - fix-celes-touchpad.diff
+    - increase-cherryview-num-irqs.diff (still required)
+  * Disable patches:
+    - add-aufs-4.11.diff (not released)
+    - allow-gpio-lookup-fallback-by-boot-param.diff (BYT audio, superseded)
+    - fix-synaptics-trackpad-power-state.diff (no longer needed)
+    - mitigate-CVE-2017-6074-dccp-double-free.diff (included)
+    - add-plbossart-experimental-codecs.diff (cht-bsw-rt5645 bits ported)
+  * Propagate kernel config changes from 4.10
+    - IT87 chromebox superIO temp sensors per MrChromebox
+    - F2FS filesystems per #340
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 01 Jul 2017 21:25:13 +0000
+
+linux-4.9.35-galliumos (4.9.35-galliumos0+WIP0) xenon; urgency=medium
+
+  * Rebase on upstream 4.9.35
+  * Disable patch: add-plbossart-experimental-codecs.diff (wip)
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 01 Jul 2017 20:44:12 +0000
+
+linux-4.9.4-galliumos (4.9.4-galliumos2) xenon; urgency=medium
+
+  * add patch: mitigate-CVE-2017-6074-dccp-double-free.diff
+  * update kernel config for CONFIG_EXT4_FS_ENCRYPTION
+
+ -- reynhout <reynhout@galliumos.org>  Thu, 23 Feb 2017 01:22:58 +0000 
+
+linux-4.9.4-galliumos (4.9.4-galliumos1) xenon; urgency=medium
+
+  * Rebase on upstream 4.9.4
+  * Drop patch: add-kbd-backlight-module.diff (not needed in 4.9)
+  * Update kernel config for current keyboard backlight code
+  * New patch: add-plbossart-experimental-codecs.diff
+    - snapshot/diff of plbossart experimental/codecs branch @ e1c14d3
+      - updates cht_bsw_rt5645 cht_bsw_max98090_ti
+      - updates skl_nau88l25_max98357a skl_nau88l25_ssm4567
+  * Update kernel config for plbossart patch
+  * Add wip kernel config for Skylake audio
+    - skl_nau88l25_max98357a (LARS, others?)
+  * Add secondary kernel config for Braswell audio
+    - cht-bsw-max98090 (CYAN)
+    - cht-bsw-rt5645 (most/all others)
+
+ -- reynhout <reynhout@galliumos.org>  Mon, 16 Jan 2017 02:54:49 +0000
+
+linux-4.9.0-galliumos (4.9.0-galliumos2) xenon; urgency=medium
+
+  * New patch: fix-synaptics-trackpad-power-state.diff
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 07 Jan 2017 21:48:11 +0000
+
+linux-4.9.0-galliumos (4.9.0-galliumos1) xenon; urgency=medium
+
+  * GalliumOS patches, ported to 4.9.0
+    - add-bfq-4.9.diff
+    - add-aufs-4.9.diff
+    - add-touchscreen-support-peppy-samus.diff
+    - add-kbd-backlight-module.diff
+    - prevent-mmcblk-rpmb-errors.diff
+    - suppress-pll-unlock-msg.diff
+    - suppress-tpm-error-msg.diff
+    - allow-gpio-lookup-fallback-by-boot-param.diff
+    - fix-celes-touchpad.diff
+  * Add new GalliumOS patches
+    - increase-cherryview-num-irqs.diff
+  * Remove GalliumOS patches
+    - increase-blkcg_max_pols.diff (equivalent patch included in bfq-4.9)
+    - add-elan-touchpad.diff (now included in mainline)
+    - add-samus-audio-support.diff (now included in mainline)
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 31 Dec 2016 01:09:32 +0000
+
+linux-4.9.0-galliumos (4.9.0-galliumos0) xenon; urgency=medium
+
+  * Linux imported from kernel.org archive
+    - https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
+
+ -- reynhout <reynhout@galliumos.org>  Sat, 24 Dec 2016 19:29:30 +0000
