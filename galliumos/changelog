@@ -1,8 +1,10 @@
-linux-4.16.13-galliumos (4.16.13-galliumos0+dev1) bismuth; urgency=medium
+linux-4.16.13-galliumos (4.16.13-galliumos1) bismuth; urgency=medium
 
   * Rebase on upstream 4.16.13
   * Update config:
     - for 4.16.13
+  * Add config for MELFAS MIP4 touchscreen
+    - CONFIG_TOUCHSCREEN_MELFAS_MIP4=m
   * Update patches:
     - aufs-4.16
     - touchpad/touchscreen config
@@ -10,7 +12,7 @@ linux-4.16.13-galliumos (4.16.13-galliumos0+dev1) bismuth; urgency=medium
   * Disable patches:
     - plbossart sound tree
 
- -- reynhout <reynhout@galliumos.org>  Sun, 03 Jun 2018 04:33:52 +0000
+ -- reynhout <reynhout@galliumos.org>  Tue, 19 Jun 2018 03:06:34 +0000
 
 linux-4.15.18-galliumos (4.15.18-galliumos0+dev2) bismuth; urgency=medium
 
