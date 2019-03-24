@@ -1,3 +1,13 @@
+linux-4.16.18-galliumos (4.16.18-galliumos1) bismuth; urgency=medium
+
+  * Rebase on upstream 4.16.18
+  * Update config:
+    - for 4.16.18
+  * Add config for XFS
+    - CONFIG_XFS_FS=m
+
+ -- reynhout <reynhout@galliumos.org>  Sun, 24 Mar 2019 18:09:05 +0000
+
 linux-4.16.13-galliumos (4.16.13-galliumos1) bismuth; urgency=medium
 
   * Rebase on upstream 4.16.13
