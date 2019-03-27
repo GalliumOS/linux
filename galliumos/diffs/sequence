@@ -6,7 +6,8 @@ add-touchpad-touchscreen-support.diff
 suppress-tpm-error-msg.diff
 check-atom-pmc-platform-clocks.diff
 #
-mask-and-clear-cherryview-irqs.diff
+#mask-and-clear-cherryview-irqs.diff
+#
 #backout-drm-i915-link-rate-fallback.diff
 avoid-drm-i915-pps-state-mismatch.diff
 

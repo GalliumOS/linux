@@ -1,3 +1,10 @@
+linux-4.16.18-galliumos (4.16.18-galliumos2) bismuth; urgency=medium
+
+  * Disable patch:
+    - mask-and-clear-cherryview-irqs.diff
+
+ -- reynhout <reynhout@galliumos.org>  Wed, 27 Mar 2019 19:48:44 +0000
+
 linux-4.16.18-galliumos (4.16.18-galliumos1) bismuth; urgency=medium
 
   * Rebase on upstream 4.16.18
