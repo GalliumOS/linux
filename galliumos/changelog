@@ -1,3 +1,11 @@
+linux-4.16.18-galliumos (4.16.18-galliumos3) bismuth; urgency=medium
+
+  * Add config for Skylake audio
+    - CONFIG_PINCTRL_INTEL=m
+    - CONFIG_PINCTRL_SUNRISEPOINT=m
+
+ -- reynhout <reynhout@galliumos.org>  Fri, 14 Jun 2019 00:31:05 +0000
+
 linux-4.16.18-galliumos (4.16.18-galliumos2) bismuth; urgency=medium
 
   * Disable patch:
