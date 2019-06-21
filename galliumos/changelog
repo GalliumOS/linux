@@ -1,3 +1,16 @@
+linux-4.16.18-galliumos (4.16.18-galliumos4) bismuth; urgency=medium
+
+  * Add config for Apollo Lake chipset and audio
+    - CONFIG_PINCTRL_BROXTON=m
+    - CONFIG_SND_SOC_INTEL_BXT_DA7219_MAX98357A_MACH=m
+    - CONFIG_SND_SOC_DA7219=m
+  * Add config for Gemini Lake chipset
+    - CONFIG_PINCTRL_GEMINILAKE=m
+  * Add config for Raydium touchscreen
+    - CONFIG_TOUCHSCREEN_RM_TS=m
+
+ -- reynhout <reynhout@galliumos.org>  Fri, 21 Jun 2019 16:25:03 +0000
+
 linux-4.16.18-galliumos (4.16.18-galliumos3) bismuth; urgency=medium
 
   * Add config for Skylake audio
