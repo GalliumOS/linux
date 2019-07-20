@@ -288,7 +288,7 @@ static int cros_ec_create_console_log(struct cros_ec_debugfs *debug_info)
 	init_waitqueue_head(&debug_info->log_wq);
 
 	if (!debugfs_create_file("console_log",
-				 S_IFREG | S_IRUGO,
+				 S_IFREG | 0444,
 				 debug_info->dir,
 				 debug_info,
 				 &cros_ec_console_log_fops))
@@ -341,7 +341,7 @@ static int cros_ec_create_panicinfo(struct cros_ec_debugfs *debug_info)
 	debug_info->panicinfo_blob.size = ret;
 
 	if (!debugfs_create_blob("panicinfo",
-				 S_IFREG | S_IRUGO,
+				 S_IFREG | 0444,
 				 debug_info->dir,
 				 &debug_info->panicinfo_blob)) {
 		ret = -ENOMEM;
@@ -398,3 +398,23 @@ void cros_ec_debugfs_remove(struct cros_ec_dev *ec)
 	cros_ec_cleanup_console_log(ec->debug_info);
 }
 EXPORT_SYMBOL(cros_ec_debugfs_remove);
+
+void cros_ec_debugfs_suspend(struct cros_ec_dev *ec)
+{
+	/*
+	 * cros_ec_debugfs_init() failures are non-fatal; it's also possible
+	 * that we initted things but decided that console log wasn't supported.
+	 * We'll use the same set of checks that cros_ec_debugfs_remove() +
+	 * cros_ec_cleanup_console_log() end up using to handle those cases.
+	 */
+	if (ec->debug_info && ec->debug_info->log_buffer.buf)
+		cancel_delayed_work_sync(&ec->debug_info->log_poll_work);
+}
+EXPORT_SYMBOL(cros_ec_debugfs_suspend);
+
+void cros_ec_debugfs_resume(struct cros_ec_dev *ec)
+{
+	if (ec->debug_info && ec->debug_info->log_buffer.buf)
+		schedule_delayed_work(&ec->debug_info->log_poll_work, 0);
+}
+EXPORT_SYMBOL(cros_ec_debugfs_resume);
