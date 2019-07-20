@@ -1,5 +1,12 @@
 linux-4.16.18-galliumos (4.16.18-galliumos4) bismuth; urgency=medium
 
+  * Add config for Tablet Switch ACPI Driver (TBMC)
+    - CONFIG_CHROMEOS_TBMC=m
+
+ -- Daniel Stuart <daniel.stuart14@gmail.com>  Sat, 20 Jul 2019 00:17:08 -0300
+
+linux-4.16.18-galliumos (4.16.18-galliumos4) bismuth; urgency=medium
+
   * Add config for Apollo Lake chipset and audio
     - CONFIG_PINCTRL_BROXTON=m
     - CONFIG_SND_SOC_INTEL_BXT_DA7219_MAX98357A_MACH=m
