@@ -1,3 +1,8 @@
+linux-4.16.18-galliumos (4.16.18-galliumos5) bismuth; urgency=medium
+
+cherry pick ac9391daac00:
+ "ASoC: topology: Improve backwards compatibility with v4 topology files"
+
 linux-4.16.18-galliumos (4.16.18-galliumos4) bismuth; urgency=medium
 
   * Add config for Apollo Lake chipset and audio
