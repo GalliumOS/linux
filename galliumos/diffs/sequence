@@ -1,12 +1,21 @@
 ## galliumos/diffs/sequence
 
 # v5.9.x
+kernel-aufs5.diff
+
+# suppress-tpm-error-msg.diff
+
+check-atom-pmc-platform-clocks.diff
+
+# as of 2020-11-15, needs updating
+# avoid-drm-i915-pps-state-mismatch.diff
+
 
 # v4.16.x
 #add-aufs-4.16.diff
 ##
-#add-touchpad-touchscreen-support.diff
 #suppress-tpm-error-msg.diff
+#add-touchpad-touchscreen-support.diff
 #check-atom-pmc-platform-clocks.diff
 ##
 ##mask-and-clear-cherryview-irqs.diff
