@@ -1,3 +1,11 @@
+linux-5.9.8-galliumos (5.9.8-galliumos0) bismuth; urgency=medium
+
+  * Rebase on upstream 5.9.8
+  * Update config:
+    - for 5.9.8
+
+ -- reynhout <reynhout@galliumos.org>  Sun, 15 Nov 2020 02:57:01 +0000
+
 linux-4.16.18-galliumos (4.16.18-galliumos4) bismuth; urgency=medium
 
   * Add config for Apollo Lake chipset and audio
